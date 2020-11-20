@@ -6,9 +6,12 @@ public class Randoms implements Iterable<Integer> {
 
     private int min, max;
 
+    Random random = new Random();
+
     public Randoms(int min, int max) {
         this.min = min;
         this.max = max;
+
     }
 
     public Iterator<Integer> iterator() {
@@ -31,8 +34,7 @@ public class Randoms implements Iterable<Integer> {
         @Override
         public Integer next() {
             if (this.hasNext()) {
-                Random random = new Random();
-                return random.ints(min, (max + 1)).findFirst().getAsInt();
+                return random.nextInt((max - min) - 1) + min;
             }
             throw new NoSuchElementException();
         }
